@@ -1,35 +1,37 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+
+const CreditItem = ({ title, name }: { title: string; name: string }) => (
+  <div className="flex items-center justify-between">
+    <p className="text-sm font-medium text-muted-foreground">{title}</p>
+    <p className="text-sm font-semibold">{name}</p>
+  </div>
+);
 
 export function CreditsCard() {
   return (
     <Card className="shadow-lg">
-      <CardHeader>
+      <CardHeader className="pb-4">
         <CardTitle>Project Credits</CardTitle>
-        <CardDescription>A Project by BS Physics</CardDescription>
       </CardHeader>
-      <CardContent className="grid gap-4 text-sm">
-        <div>
-          <h4 className="font-semibold">Mechanical Work</h4>
-          <p className="text-muted-foreground">Masoom Ali</p>
+      <CardContent className="grid gap-4">
+        <div className="space-y-3">
+          <CreditItem title="Mechanical Work" name="Masoom Ali" />
+          <Separator />
+          <CreditItem
+            title="Electronics, Programming & Web"
+            name="Muhammad Sultan Ul Arifeen"
+          />
         </div>
-        <div>
-          <h4 className="font-semibold">
-            Electronics, Programming & Web Development
-          </h4>
-          <p className="text-muted-foreground">
-            Muhammad Sultan Ul Arifeen
+        <Separator />
+        <div className="space-y-3">
+          <p className="text-sm font-medium text-muted-foreground">
+            Special Thanks
           </p>
-        </div>
-        <div>
-          <h4 className="font-semibold">Special Thanks</h4>
-          <p className="text-muted-foreground">
-            Principal Azhar Kaisar & Professor Muhammad Farooq Ibadat
+          <p className="text-right text-sm font-semibold">
+            Principal Azhar Kaisar
+            <br />
+            Professor Muhammad Farooq Ibadat
           </p>
         </div>
       </CardContent>
