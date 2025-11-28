@@ -20,13 +20,15 @@ const StatCard = ({
   value,
   unit,
   Icon,
+  className,
 }: {
   title: string;
   value: number | null;
   unit: string;
   Icon: React.ElementType;
+  className?: string;
 }) => (
-  <Card className="flex-1 shadow-md">
+  <Card className={cn('shadow-lg', className)}>
     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
       <CardTitle className="text-sm font-medium">{title}</CardTitle>
       <Icon className="h-4 w-4 text-muted-foreground" />
@@ -44,25 +46,28 @@ const StatCard = ({
 
 export function StatsCards({ stats, unit }: StatsCardsProps) {
   return (
-    <div className="flex h-full flex-col justify-between gap-4 md:flex-row lg:flex-col">
+    <>
       <StatCard
         title="Avg Speed (1h)"
         value={stats.avg}
         unit={unit}
         Icon={BarChart}
+        className="lg:col-span-1"
       />
       <StatCard
         title="Max Speed (1h)"
         value={stats.max}
         unit={unit}
         Icon={TrendingUp}
+        className="lg:col-span-1"
       />
       <StatCard
         title="Min Speed (1h)"
         value={stats.min}
         unit={unit}
         Icon={TrendingDown}
+        className="lg:col-span-1"
       />
-    </div>
+    </>
   );
 }

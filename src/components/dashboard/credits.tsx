@@ -1,21 +1,28 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
 const CreditItem = ({ title, name }: { title: string; name: string }) => (
-  <div className="flex items-center justify-between">
-    <p className="text-sm font-medium text-muted-foreground">{title}</p>
-    <p className="text-sm font-semibold">{name}</p>
+  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+    <p className="text-sm text-muted-foreground">{title}</p>
+    <p className="font-semibold text-foreground">{name}</p>
   </div>
 );
 
 export function CreditsCard() {
   return (
-    <Card className="shadow-lg">
-      <CardHeader className="pb-4">
-        <CardTitle>Project Credits</CardTitle>
+    <Card className="shadow-lg border-2 border-dashed">
+      <CardHeader className="text-center">
+        <CardDescription>A Project by</CardDescription>
+        <CardTitle className="text-2xl">BS Physics - Batch 2024</CardTitle>
       </CardHeader>
-      <CardContent className="grid gap-4">
-        <div className="space-y-3">
+      <CardContent className="grid gap-6 text-center md:text-left">
+        <div className="grid gap-4 rounded-lg border bg-card p-4">
           <CreditItem title="Mechanical Work" name="Masoom Ali" />
           <Separator />
           <CreditItem
@@ -23,16 +30,18 @@ export function CreditsCard() {
             name="Muhammad Sultan Ul Arifeen"
           />
         </div>
-        <Separator />
-        <div className="space-y-3">
+        <div className="grid gap-2 rounded-lg border bg-card p-4">
           <p className="text-sm font-medium text-muted-foreground">
             Special Thanks
           </p>
-          <p className="text-right text-sm font-semibold">
-            Principal Azhar Kaisar
-            <br />
-            Professor Muhammad Farooq Ibadat
-          </p>
+          <div className="flex flex-col items-center justify-center gap-1 md:flex-row md:justify-between">
+            <p className="font-semibold text-foreground">
+              Principal Azhar Kaisar
+            </p>
+            <p className="font-semibold text-foreground">
+              Professor Muhammad Farooq Ibadat
+            </p>
+          </div>
         </div>
       </CardContent>
     </Card>

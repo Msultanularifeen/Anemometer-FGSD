@@ -18,11 +18,13 @@ export function Dashboard() {
   if (loading) {
     return (
       <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:grid-cols-12">
-        <div className="grid gap-4 lg:col-span-7">
-          <Skeleton className="h-[220px] w-full" />
-        </div>
-        <div className="grid gap-4 lg:col-span-5">
-          <Skeleton className="h-[220px] w-full" />
+        <div className="grid gap-4 lg:col-span-12">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <Skeleton className="h-[150px] w-full" />
+            <Skeleton className="h-[150px] w-full" />
+            <Skeleton className="h-[150px] w-full" />
+            <Skeleton className="h-[150px] w-full" />
+          </div>
         </div>
         <div className="grid gap-4 lg:col-span-12">
           <Skeleton className="h-[300px] w-full" />
@@ -36,14 +38,12 @@ export function Dashboard() {
 
   if (error) {
     return (
-       <Alert variant="destructive" className="max-w-2xl mx-auto">
-          <AlertCircle className="h-4 w-4" />
-          <AlertTitle>Error</AlertTitle>
-          <AlertDescription>
-            {error}
-          </AlertDescription>
-        </Alert>
-    )
+      <Alert variant="destructive" className="max-w-2xl mx-auto">
+        <AlertCircle className="h-4 w-4" />
+        <AlertTitle>Error</AlertTitle>
+        <AlertDescription>{error}</AlertDescription>
+      </Alert>
+    );
   }
 
   const convertedSpeed =
@@ -59,17 +59,13 @@ export function Dashboard() {
   }));
 
   return (
-    <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:grid-cols-12">
-      <div className="grid gap-4 lg:col-span-7">
+    <div className="grid auto-rows-max items-start gap-4 md:gap-8">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <CurrentSpeed speed={convertedSpeed} unit={unit} />
-      </div>
-      <div className="grid gap-4 lg:col-span-5">
         <StatsCards stats={convertedStats} unit={unit} />
       </div>
-      <div className="grid gap-4 lg:col-span-12">
+      <div className="grid gap-4 lg:grid-cols-1">
         <SpeedChart history={convertedHistory} unit={unit} />
-      </div>
-      <div className="grid gap-4 lg:col-span-12">
         <CreditsCard />
       </div>
     </div>
