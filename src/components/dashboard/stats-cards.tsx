@@ -3,6 +3,7 @@
 import { BarChart, TrendingDown, TrendingUp } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import type { SpeedUnit } from '@/contexts/app-context';
+import { cn } from '@/lib/utils';
 
 interface Stats {
   avg: number | null;
@@ -52,21 +53,18 @@ export function StatsCards({ stats, unit }: StatsCardsProps) {
         value={stats.avg}
         unit={unit}
         Icon={BarChart}
-        className="lg:col-span-1"
       />
       <StatCard
         title="Max Speed (1h)"
         value={stats.max}
         unit={unit}
         Icon={TrendingUp}
-        className="lg:col-span-1"
       />
       <StatCard
         title="Min Speed (1h)"
         value={stats.min}
         unit={unit}
         Icon={TrendingDown}
-        className="lg:col-span-1"
       />
     </>
   );
